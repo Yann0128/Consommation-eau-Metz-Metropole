@@ -8,6 +8,13 @@ Cette intégration crée un appareil avec trois entités :
 | **index compteur** (capteur, m³) | Son état porte le dernier index connu (3 décimales). Pas de statistique, son historique trace la courbe du compteur. |
 | **Actualiser données** (bouton) | Permet de forcer un appel au portail en ligne. |
 
+## Avertissement
+
+- Projet personnel **non officiel** : il n'est ni affilié, ni approuvé, ni soutenu par la Régie de l'eau de Metz Métropole, l'Eurométropole de Metz ou l'éditeur du portail en ligne. Les noms cités appartiennent à leurs propriétaires respectifs.
+- L'intégration se connecte au portail en ligne avec vos identifiants et appelle la même interface que le site web. Cette interface n'est pas documentée publiquement et peut changer sans préavis, ce qui peut interrompre l'intégration.
+- Vérifiez que cet usage est compatible avec les conditions d'utilisation du portail : vous en restez seul responsable. L'intégration se limite à 4 appels par jour (plus ceux du bouton Actualiser données) : ne cherchez pas à augmenter cette fréquence.
+- Logiciel fourni « tel quel », sans aucune garantie, sous licence MIT (voir le fichier `LICENSE`). Les données sont écrites directement dans la base du recorder de Home Assistant : faites une sauvegarde complète avant l'installation, une mise à jour ou un import.
+
 ## Première installation
 
 1. **faire une sauvegarde complète avant la mise à jour.**
@@ -77,11 +84,15 @@ Le statut n'est visible que dans les attributs.
 
 ### Format du fichier
 
-- Une ligne par jour contenant la date + valeur. 
-- La valeur peut être une consommation `daily` ou un index `index. 
-- En-tête, lignes vides et séparateur mixte (`,` ou `;`) acceptés.
-- Une journée en double : la valeur la plus élevée est retenue. 
-- Unités acceptées : m³ ou L.
+Une ligne par jour contenant la date + valeur.
+
+La valeur peut être une consommation `daily` ou un index `index`.
+
+En-tête, lignes vides et séparateur mixte (`,` ou `;`) acceptés.
+
+Une journée en double : la valeur la plus élevée est retenue.
+
+Unités acceptées : m³ ou L.
 
 **Faire une sauvegarde HA complète avant le premier import** : les données sont écrites dans la base du recorder
 
@@ -89,3 +100,24 @@ Le statut n'est visible que dans les attributs.
 
 - L'index est souvent publié entre J+1 et J+3 par la régie. Il apparaîtra dans l'Historique lors du prochain appel de l'intégration 
 et l'heure réelle de la mesure est stockée dans `measured_at`.
+
+## Confidentialité
+
+- Votre identifiant, votre mot de passe et l'ID du contrat sont enregistrés dans la configuration de Home Assistant, sans chiffrement, comme pour la plupart des intégrations.
+- Ils ne sont envoyés qu'au portail en ligne de la régie (`https://moncompte.regie-eau-mm.fr`). Aucune donnée n'est transmise à l'auteur ni à un service tiers, et l'intégration n'envoie aucune statistique d'usage.
+
+## Signaler un problème
+
+Ouvrir un ticket dans l'onglet [Issues](https://github.com/Yann0128/Consommation-eau-Metz-Metropole/issues) du dépôt, en indiquant :
+
+- la version de Home Assistant et celle de l'intégration ;
+- ce que vous attendiez et ce qui se passe ;
+- les messages du journal (Paramètres > Système > Journaux, en cherchant `water_history`) et la valeur de l'attribut `last_sync_ok` du capteur de consommation.
+
+Pour obtenir plus de détails, activer les journaux détaillés dans `configuration.yaml`, puis redémarrer HA :
+```yaml
+logger:
+  logs:
+    custom_components.water_history: debug
+```
+Avant de publier un journal, masquer l'identifiant, le mot de passe, les jetons et l'adresse e-mail.

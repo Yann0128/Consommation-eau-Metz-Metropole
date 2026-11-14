@@ -1,14 +1,16 @@
 {
   "domain": "water_history",
   "name": "Consommation eau Metz Métropole",
-  "codeowners": [],
+  "codeowners": [
+    "@Yann0128"
+  ],
   "config_flow": true,
   "dependencies": [
     "recorder"
   ],
-  "documentation": "https://example.invalid/water_history",
+  "documentation": "https://github.com/Yann0128/Consommation-eau-Metz-Metropole",
   "integration_type": "service",
   "iot_class": "cloud_polling",
-  "issue_tracker": "https://example.invalid/water_history/issues",
+  "issue_tracker": "https://github.com/Yann0128/Consommation-eau-Metz-Metropole/issues",
   "version": "0.6.0"
 }
