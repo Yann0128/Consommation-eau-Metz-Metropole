@@ -1,10 +1,10 @@
-# Consommation eau Metz Métropole (v0.x.0)
+# Consommation eau Metz Métropole
 
 Cette intégration crée un appareil avec trois entités :
 
 | Entité | Rôle |
 |---|---|
-| **<nom libre>** (capteur, m³) | Porte l'historique statistique des consommations pour le tableau Énergie. État constant à 0 volontairement. |
+| **nom libre** (capteur, m³) | Porte l'historique statistique des consommations pour le tableau Énergie. État constant à 0 volontairement. |
 | **index compteur** (capteur, m³) | Son état porte le dernier index connu (3 décimales). Pas de statistique, son historique trace la courbe du compteur. |
 | **Actualiser données** (bouton) | Permet de forcer un appel au portail en ligne. |
 
@@ -58,7 +58,7 @@ Le statut n'est visible que dans les attributs.
 
 | Statut | Signification |
 |---|---|
-| **réél** | Index réel stocké sur le portail en ligne
+| **réel** | Index réel stocké sur le portail en ligne
 | **estimé** | Index estimé stocké sur le portail en ligne
 
 Le statut n'est visible que dans les attributs.
@@ -77,11 +77,11 @@ Le statut n'est visible que dans les attributs.
 
 ### Format du fichier
 
-Une ligne par jour contenant la date + valeur. 
-La valeur peut être une consommation `daily` ou un index `index`
-En-tête, lignes vides et séparateur mixte (`,` ou `;`) acceptés.
-Une journée en double : la valeur la plus élevée est retenue. 
-Unités acceptées : m³ ou L.
+- Une ligne par jour contenant la date + valeur. 
+- La valeur peut être une consommation `daily` ou un index `index. 
+- En-tête, lignes vides et séparateur mixte (`,` ou `;`) acceptés.
+- Une journée en double : la valeur la plus élevée est retenue. 
+- Unités acceptées : m³ ou L.
 
 **Faire une sauvegarde HA complète avant le premier import** : les données sont écrites dans la base du recorder
 
