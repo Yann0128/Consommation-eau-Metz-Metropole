@@ -1,4 +1,4 @@
-# Consommation eau Metz Métropole
+# Consommation eau Metz Métropole (v0.x.0)
 
 Cette intégration crée un appareil avec trois entités :
 

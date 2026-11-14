@@ -1,0 +1,101 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Nouveau capteur d'eau",
+        "description": "Définissez le nom de l'entité pour la consommation d'eau de votre domicile",
+        "data": {
+          "name": "Nom de l'entité"
+        }
+      },
+      "portal": {
+        "title": "Connexion au portail de la régie",
+        "description": "Identifiants du portail en ligne de votre gestionnaire d'eau.",
+        "data": {
+          "login": "Identifiant du portail",
+          "password": "Mot de passe",
+          "contract_id": "Identifiant interne du contrat"
+        },
+        "data_description": {
+          "contract_id": "référence à identifier dans le curl, juste après teleindex2/ (exemple : 12345)"
+        }
+      },
+      "reconfigure": {
+        "title": "Identifiants du portail",
+        "description": "Modifiez les identifiants du portail en ligne de votre gestionnaire d'eau.",
+        "data": {
+          "login": "Identifiant du portail",
+          "password": "Mot de passe",
+          "contract_id": "Identifiant interne du contrat"
+        },
+        "data_description": {
+          "contract_id": "référence à identifier dans le curl, juste après teleindex2/ (exemple : 12345)"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Reconnexion au portail",
+        "description": "Le portail a refusé la connexion plusieurs fois de suite. Saisissez à nouveau vos identifiants.",
+        "data": {
+          "login": "Identifiant du portail",
+          "password": "Mot de passe",
+          "contract_id": "Identifiant interne du contrat"
+        },
+        "data_description": {
+          "contract_id": "référence à identifier dans le curl, juste après teleindex2/ (exemple : 12345)"
+        }
+      }
+    },
+    "error": {
+      "empty_name": "Le nom ne peut pas être vide.",
+      "invalid_auth": "Identifiant ou mot de passe refusé par le portail.",
+      "cannot_connect": "Portail injoignable ou connexion temporairement refusée, réessayez dans un moment.",
+      "invalid_contract": "Aucune donnée pour cet identifiant interne de contrat : saisissez le nombre qui suit teleindex2/ dans le curl.",
+      "unknown": "Erreur inattendue."
+    },
+    "abort": {
+      "already_configured": "Une entité de ce nom existe déjà.",
+      "reconfigure_successful": "Identifiants mis à jour.",
+      "reauth_successful": "Reconnexion réussie."
+    }
+  },
+  "services": {
+    "import_water_history": {
+      "name": "Importer l'historique d'eau",
+      "description": "Importe la consommation d'eau journalière d'un fichier CSV dans l'historique statistique d'un capteur créé par cette intégration.",
+      "fields": {
+        "entity_id": {
+          "name": "Capteur cible",
+          "description": "Capteur créé par Consommation eau Metz Métropole."
+        },
+        "file_path": {
+          "name": "Chemin du fichier",
+          "description": "Chemin du CSV, relatif à /config ou absolu."
+        },
+        "value_type": {
+          "name": "Type de valeur",
+          "description": "daily = consommation par jour ; index = relevés d'index cumulés."
+        },
+        "unit": {
+          "name": "Unité du fichier",
+          "description": "Unité des valeurs du fichier."
+        },
+        "delimiter": {
+          "name": "Séparateur",
+          "description": "auto (défaut) accepte la virgule et le point-virgule ligne par ligne ; sinon le caractère indiqué."
+        },
+        "date_column": {
+          "name": "Colonne date",
+          "description": "Numéro de colonne (à partir de 1)."
+        },
+        "value_column": {
+          "name": "Colonne valeur",
+          "description": "Numéro de colonne (à partir de 1)."
+        },
+        "date_format": {
+          "name": "Format de date",
+          "description": "Format strptime ; détecté automatiquement si vide."
+        }
+      }
+    }
+  }
+}

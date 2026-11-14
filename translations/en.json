@@ -1,0 +1,101 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "New water sensor",
+        "description": "Define the name of the entity for your home's water consumption",
+        "data": {
+          "name": "Entity name"
+        }
+      },
+      "portal": {
+        "title": "Water provider portal",
+        "description": "Credentials of your water provider's online portal.",
+        "data": {
+          "login": "Portal login",
+          "password": "Password",
+          "contract_id": "Internal contract id"
+        },
+        "data_description": {
+          "contract_id": "reference to find in the curl, right after teleindex2/ (example: 12345)"
+        }
+      },
+      "reconfigure": {
+        "title": "Portal credentials",
+        "description": "Change the credentials of your water provider's online portal.",
+        "data": {
+          "login": "Portal login",
+          "password": "Password",
+          "contract_id": "Internal contract id"
+        },
+        "data_description": {
+          "contract_id": "reference to find in the curl, right after teleindex2/ (example: 12345)"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Reconnect to the portal",
+        "description": "The portal refused the login several times in a row. Enter your credentials again.",
+        "data": {
+          "login": "Portal login",
+          "password": "Password",
+          "contract_id": "Internal contract id"
+        },
+        "data_description": {
+          "contract_id": "reference to find in the curl, right after teleindex2/ (example: 12345)"
+        }
+      }
+    },
+    "error": {
+      "empty_name": "The name cannot be empty.",
+      "invalid_auth": "Login or password refused by the portal.",
+      "cannot_connect": "Portal unreachable or login temporarily refused, try again in a moment.",
+      "invalid_contract": "No data for this internal contract id: enter the number following teleindex2/ in the curl.",
+      "unknown": "Unexpected error."
+    },
+    "abort": {
+      "already_configured": "An entity with this name already exists.",
+      "reconfigure_successful": "Credentials updated.",
+      "reauth_successful": "Reconnected."
+    }
+  },
+  "services": {
+    "import_water_history": {
+      "name": "Import water history",
+      "description": "Import daily water consumption from a CSV file into the statistics history of a sensor created by this integration.",
+      "fields": {
+        "entity_id": {
+          "name": "Target sensor",
+          "description": "Sensor created by Consommation eau Metz Métropole."
+        },
+        "file_path": {
+          "name": "File path",
+          "description": "CSV path, relative to /config or absolute."
+        },
+        "value_type": {
+          "name": "Value type",
+          "description": "daily = consumption per day; index = cumulative meter readings."
+        },
+        "unit": {
+          "name": "File unit",
+          "description": "Unit of the values in the file."
+        },
+        "delimiter": {
+          "name": "Delimiter",
+          "description": "auto (default) accepts comma and semicolon line by line; otherwise the given character."
+        },
+        "date_column": {
+          "name": "Date column",
+          "description": "1-based column number."
+        },
+        "value_column": {
+          "name": "Value column",
+          "description": "1-based column number."
+        },
+        "date_format": {
+          "name": "Date format",
+          "description": "strptime format; auto-detected if empty."
+        }
+      }
+    }
+  }
+}

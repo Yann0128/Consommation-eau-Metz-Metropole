@@ -1,0 +1,50 @@
+import_water_history:
+  fields:
+    entity_id:
+      required: true
+      selector:
+        entity:
+          integration: water_history
+          domain: sensor
+    file_path:
+      required: true
+      example: water_history/conso_eau.csv
+      selector:
+        text: {}
+    value_type:
+      default: daily
+      selector:
+        select:
+          options:
+            - daily
+            - index
+    unit:
+      default: m3
+      selector:
+        select:
+          options:
+            - m3
+            - L
+    delimiter:
+      default: auto
+      selector:
+        text: {}
+    date_column:
+      default: 1
+      selector:
+        number:
+          min: 1
+          max: 50
+          mode: box
+    value_column:
+      default: 2
+      selector:
+        number:
+          min: 1
+          max: 50
+          mode: box
+    date_format:
+      required: false
+      example: "%d/%m/%Y"
+      selector:
+        text: {}
