@@ -17,6 +17,20 @@ Cette intégration crée un appareil avec trois entités :
 
 ## Première installation
 
+### Installation via HACS ou Marketplace
+1. Ouvrir HACS puis cliquer sur Intégrations -- ou -- Ouvrir Marketplace
+2. Cliquer sur ⋮ en haut à droite de l'écran
+3. Dans le menu, sélectionner Dépôts personnels
+4. Renseigner :
+   - URL: [https://github.com/Yann0128/Consommation-eau-Metz-Metropole](https://github.com/Yann0128/Consommation-eau-Metz-Metropole)
+   - Categorie: Integration
+5. Sélectionner "Consommation eau Metz Metropole", cliquer sur Télécharger puis redémarrer HA.
+6. Ajouter une intégration > « Consommation eau Metz Métropole » : Renseigner le nom de l'entité,
+   puis identifiant, mot de passe et ID du contrat (voir détail plus bas) 
+7. Dans le module Énergie de HA > Consommation d'eau > Ajouter le capteur de consommation.
+
+### Installation manuelle
+
 1. **faire une sauvegarde complète avant la mise à jour.**
 2. Copier le dossier `water_history` dans `/config/custom_components/` puis redémarrer HA.
 3. Ajouter une intégration > « Consommation eau Metz Métropole » : Renseigner le nom de l'entité,
@@ -31,7 +45,7 @@ Cette intégration crée un appareil avec trois entités :
 4. Se connecter pour accéder à l'espace personnel du portail
 5. Effectuer une recherche dans les lignes apparues dans DevTools pour trouver l'id dans les datas du contrat
 
-## Mise à jour
+## Mise à jour manuelle
 
 1. **faire une sauvegarde complète avant la mise à jour.**
 2. Remplacer le dossier `custom_components/water_history` puis redémarrer HA.
